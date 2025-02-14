@@ -18,7 +18,8 @@ namespace EksamensOpgaveBackend.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<ProductModel>().HasData(new ProductModel
+            modelBuilder.Entity<ProductModel>().HasData
+            (new ProductModel
             {
                 Id = 1,
                 Name = "værktøj1",

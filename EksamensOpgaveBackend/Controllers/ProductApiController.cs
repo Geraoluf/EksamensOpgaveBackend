@@ -3,6 +3,7 @@ using EksamensOpgaveBackend.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
 
 namespace EksamensOpgaveBackend.Controllers
 {
@@ -23,7 +24,14 @@ namespace EksamensOpgaveBackend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductModel>>> GetProducts()
         {
-            return await _context.productModels.ToListAsync();
+            var products = await _context.productModels.ToListAsync();
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true // Gør JSON-output mere læsbart
+            };
+
+            return new JsonResult(products, options);
+            
         }
 
 
@@ -32,14 +40,19 @@ namespace EksamensOpgaveBackend.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductModel>> GetProduct(int id)
         {
-            var product = await _context.productModels.FindAsync(id);
+            var product = await _context.productModels.FindAsync(id); // Finder kun det ene produkt
 
             if (product == null)
             {
-                return NotFound();
+                return NotFound(); // Returnerer 404, hvis produktet ikke findes
             }
 
-            return product;
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true // Gør JSON-output mere læsbart
+            };
+
+            return new JsonResult(product, options);
         }
     }
 }

@@ -1,13 +1,18 @@
 using EksamensOpgaveBackend.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
+// Tilføj både API-controllere og MVC-views
+builder.Services.AddControllersWithViews()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.WriteIndented = true; // Gør JSON-output pænt
+    });
 
-builder.Services.AddDbContext<ConnectDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DbConnectionString")));
-
+builder.Services.AddDbContext<ConnectDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DbConnectionString")));
 
 var app = builder.Build();
 
@@ -15,7 +20,6 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -26,6 +30,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+// Tilføj både API-routing og MVC-routing
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
