@@ -9,7 +9,7 @@ namespace EksamensOpgaveBackend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductApiController : ControllerBase
+    public class ProductApiController : Controller
     {
         private readonly ConnectDbContext _context;
 
@@ -35,7 +35,7 @@ namespace EksamensOpgaveBackend.Controllers
         }
 
 
-
+        /*
         // GET: api/productapi/1
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductModel>> GetProduct(int id)
@@ -53,6 +53,21 @@ namespace EksamensOpgaveBackend.Controllers
             };
 
             return new JsonResult(product, options);
+        */
+
+            // Hent produktet fra databasen og send det til View
+            [HttpGet("{id}")]
+            public async Task<IActionResult> GetProductView(int id)
+            {
+                var product = await _context.productModels.FindAsync(id); // Finder kun det ene produkt
+
+                if (product == null)
+                {
+                    return NotFound(); // Returnerer 404, hvis produktet ikke findes
+                }
+
+                return View(product); // Sender produktet til et View
+            }
+
         }
     }
-}
