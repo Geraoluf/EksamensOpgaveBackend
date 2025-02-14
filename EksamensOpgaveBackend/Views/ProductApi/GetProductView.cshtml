@@ -5,14 +5,14 @@
 @if (Model != null)
 {
     <div>
-        <h2>@Model.Name</h2> <!-- Vis produktnavn -->
-        <p>@Model.Description</p> <!-- Vis produktbeskrivelse -->
-        <p><strong>Price:</strong> @Model.Price</p> <!-- Vis pris -->
-        <p><strong>Year of Production:</strong> @Model.YearOfProduction</p> <!-- Vis produktionsår -->
-        <img src="@Model.ImageUrl" alt="@Model.Name" /> <!-- Vis billede -->
+        <h2>@Model.Name</h2> 
+        <p>@Model.Description</p> 
+        <p><strong>Price:</strong> @Model.Price</p> 
+        <p><strong>Year of Production:</strong> @Model.YearOfProduction</p> 
+        <img src="@Model.ImageUrl" alt="@Model.Name" /> 
     </div>
 }
 else
 {
-    <p>Produktet blev ikke fundet.</p> <!-- Hvis model er null -->
+    <p>Produktet blev ikke fundet.</p> 
 }
