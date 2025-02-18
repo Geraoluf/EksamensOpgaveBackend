@@ -1,8 +1,48 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model EksamensOpgaveBackend.Models.ProductModel
 
 <h2>Her kan du tilføje produkter til din database</h2>
+
+<br />
+
+<h2>Opret nyt produkt</h2>
+
+<br />
+   
+<div>
+
+    <form asp-action="CreateProduct" asp-controller="AddProduct" method="post" enctype="multipart/form-data">
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">Navn på produkt</label>
+            <input type="text" class="form-control" id="name" asp-for="Name" required>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label">Beskrivelse</label>
+            <textarea class="form-control" id="description" asp-for="Description" rows="3"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Price" class="form-label">Pris</label>
+            <input type="number" class="form-control" id="price" asp-for="Price" step="0.01" required>
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ImageUrl" class="form-label">Upload billede</label>
+            <input type="file" class="form-control" id="image" name="ImageFile" accept="image/*" required>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="YearOfProduction" class="form-label">Produktionsår</label>
+            <input type="number" class="form-control" id="yearOfProduction" asp-for="YearOfProduction" min="1900" max="2025" required>
+            <span asp-validation-for="YearOfProduction" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Gem produkt</button>
+    </form>
+</div>
+
+    
 
