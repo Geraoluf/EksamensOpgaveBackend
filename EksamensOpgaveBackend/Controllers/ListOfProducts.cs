@@ -23,11 +23,7 @@ namespace EksamensOpgaveBackend.Controllers
         }
 
 
-        public IActionResult Details(int id)
-        {
-            var product = _dbcontext.productModels.FirstOrDefault(i => i.Id == id);
-            return View(product);
-        }
+        
 
     }
 }

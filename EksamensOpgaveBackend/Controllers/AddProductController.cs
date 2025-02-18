@@ -40,7 +40,7 @@ namespace EksamensOpgaveBackend.Controllers
             _DbContext.SaveChanges();
 
 
-            return View();
+            return View(Product);
         }
 
 
