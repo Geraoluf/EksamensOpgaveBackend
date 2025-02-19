@@ -11,7 +11,7 @@
 <div>
 
     <form asp-action="CreateProduct" asp-controller="AddProduct" method="post" enctype="multipart/form-data">
-
+        @Html.AntiForgeryToken()
         <div class="mb-3">
             <label asp-for="Name" class="form-label">Navn på produkt</label>
             <input type="text" class="form-control" id="name" asp-for="Name" required>

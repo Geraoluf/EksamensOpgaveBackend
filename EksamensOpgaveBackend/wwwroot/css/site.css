@@ -20,3 +20,33 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.custom-green-btn {
+    background-color: #28a745; /* Bootstrap's grønne farve */
+    border-color: #28a745;
+    color: white;
+}
+
+    .custom-green-btn:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+
+/* Forældrecontainer for at centrere */
+.center-container {
+    text-align: center; /* Centrerer alt indhold i containeren */
+    width: 100%;
+}
+
+/* Styling af selve overskriften */
+.product-list-title {
+    border: 2px solid #90EE90; /* Lysegrøn ramme */
+    padding: 10px 20px; /* Giver luft omkring teksten */
+    display: inline-block; /* Gør, at boksen kun er omkring teksten */
+    border-radius: 8px; /* Afrundede hjørner */
+    background-color: #f0fff0; /* Lys baggrund */
+    color: #333; /* Mørk tekst */
+    font-weight: bold;
+    margin-top: 20px; /* Tilføjer lidt afstand ovenfor */
+}
+

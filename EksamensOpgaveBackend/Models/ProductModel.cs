@@ -14,7 +14,7 @@ namespace EksamensOpgaveBackend.Models
             public string? Description { get; set; }
 
             [Required(ErrorMessage = "Pris er påkrævet")]
-            [Range(10, 200, ErrorMessage = "skriv en pris mellem 50 0g 200")]
+            [Range(10, 200, ErrorMessage = "skriv en pris mellem 10 0g 200")]
             public double Price { get; set; }
 
             public string? ImageUrl { get; set; }

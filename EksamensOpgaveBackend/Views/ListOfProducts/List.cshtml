@@ -4,7 +4,10 @@
     ViewData["Title"] = "Liste af Produkter";
 }
 
-<h1>@ViewData["Title"]</h1>
+<<div class="center-container">
+    <h2 class="product-list-title">@ViewData["Title"]</h2>
+</div>
+
 
 <table class="table">
     <thead>
@@ -40,7 +43,8 @@
                 <td>
                     <!-- Form til at slette produktet -->
                     <form method="post" action="@Url.Action("Delete", "Delete", new { id = product.Id })" onsubmit="return confirm('Er du sikker på, at du vil slette dette produkt?');">
-                        <button type="submit" class="btn btn-danger">Slet</button>
+                        <button type="submit" class="btn custom-green-btn">Slet</button>
+
                     </form>
                 </td>
             </tr>

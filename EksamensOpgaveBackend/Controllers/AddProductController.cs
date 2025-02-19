@@ -24,8 +24,8 @@ namespace EksamensOpgaveBackend.Controllers
             return View();
         }
 
-
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult CreateProduct(ProductModel productModel)
         {
             if (productModel.Image !=  null)
