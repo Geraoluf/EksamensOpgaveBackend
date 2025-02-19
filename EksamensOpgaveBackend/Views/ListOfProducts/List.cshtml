@@ -39,7 +39,7 @@
                 <td>@product.YearOfProduction</td>
                 <td>
                     <!-- Form til at slette produktet -->
-                    <form method="post" action="@Url.Action("Delete", "Product", new { id = product.Id })" onsubmit="return confirm('Er du sikker på, at du vil slette dette produkt?');">
+                    <form method="post" action="@Url.Action("Delete", "Delete", new { id = product.Id })" onsubmit="return confirm('Er du sikker på, at du vil slette dette produkt?');">
                         <button type="submit" class="btn btn-danger">Slet</button>
                     </form>
                 </td>
