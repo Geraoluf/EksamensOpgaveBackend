@@ -30,8 +30,10 @@
         </div>
 
         <div class="mb-3">
-            <label asp-for="ImageUrl" class="form-label">Upload billede</label>
-            <input type="file" class="form-control" id="image" name="ImageFile" accept="image/*" required>
+            <label asp-for="ImageUrl" hidden class="form-label">Upload billede</label>
+            <label asp-for="Image" hidden class="form-label">Upload billede</label>
+            <input type="file" class="form-control" id="image" asp-for="Image" accept="image/*" required>
+
         </div>
 
         <div class="mb-3">

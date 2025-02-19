@@ -11,6 +11,8 @@ builder.Services.AddControllersWithViews()
         options.JsonSerializerOptions.WriteIndented = true; // Gør JSON-output pænt
     });
 
+builder.Services.AddRazorPages();
+
 builder.Services.AddDbContext<ConnectDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DbConnectionString")));
 

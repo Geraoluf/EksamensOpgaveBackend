@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.Contracts;
 
 namespace EksamensOpgaveBackend.Models
 {
@@ -19,6 +21,11 @@ namespace EksamensOpgaveBackend.Models
 
             [Range(2015, 2025, ErrorMessage = "Produktionsår skal være over 2015 og under 2025")]
             public int YearOfProduction { get; set; }
+
+            [NotMapped]
+            public IFormFile? Image {  get; set; }
+         
+            
        
     }
 }

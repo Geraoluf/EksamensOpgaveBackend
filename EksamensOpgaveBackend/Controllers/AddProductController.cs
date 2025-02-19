@@ -8,11 +8,13 @@ namespace EksamensOpgaveBackend.Controllers
     {
         
         private readonly ConnectDbContext _DbContext;
+        private readonly IWebHostEnvironment _WebHostEnvironment;
 
 
-        public AddProductController(ConnectDbContext dbContext)
+        public AddProductController(ConnectDbContext dbContext, IWebHostEnvironment webHostEnvironment)
         {
             _DbContext = dbContext;
+            _WebHostEnvironment = webHostEnvironment;
         }
 
 
@@ -26,6 +28,20 @@ namespace EksamensOpgaveBackend.Controllers
 
         public IActionResult CreateProduct(ProductModel productModel)
         {
+            if (productModel.Image !=  null)
+            {
+                string fileName = Guid.NewGuid().ToString()+ Path.GetExtension(productModel.Image.FileName);
+                string imagePath = Path.Combine(_WebHostEnvironment.WebRootPath, @"Images/Product");
+                using var fileStream = new FileStream(Path.Combine(imagePath, fileName), FileMode.Create);
+                productModel.Image.CopyTo(fileStream);
+                productModel.ImageUrl = $"/Images/Product/{fileName}";
+
+            }
+            else
+            {
+                productModel.ImageUrl = "https://placehold.co/600x400";
+                
+            }
 
             var Product = new ProductModel
             {
@@ -39,8 +55,8 @@ namespace EksamensOpgaveBackend.Controllers
             _DbContext.productModels.Add(Product);
             _DbContext.SaveChanges();
 
-
             return View(Product);
+
         }
 
 

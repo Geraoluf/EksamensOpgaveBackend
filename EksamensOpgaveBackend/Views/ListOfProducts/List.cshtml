@@ -15,6 +15,7 @@
             <th>Pris</th>
             <th>Billede</th>
             <th>Produktionsår</th>
+            <th>Handlinger</th> <!-- Tilføjet kolonne for handlinger -->
         </tr>
     </thead>
     <tbody>
@@ -28,7 +29,7 @@
                 <td>
                     @if (!string.IsNullOrEmpty(product.ImageUrl))
                     {
-                        <img src="@product.ImageUrl" alt="Produktbillede" style="width:100px; height:auto;" />
+                        <img src="@Url.Content(product.ImageUrl)" alt="Produktbillede" style="width:100px; height:auto;" />
                     }
                     else
                     {
@@ -36,6 +37,12 @@
                     }
                 </td>
                 <td>@product.YearOfProduction</td>
+                <td>
+                    <!-- Form til at slette produktet -->
+                    <form method="post" action="@Url.Action("Delete", "Product", new { id = product.Id })" onsubmit="return confirm('Er du sikker på, at du vil slette dette produkt?');">
+                        <button type="submit" class="btn btn-danger">Slet</button>
+                    </form>
+                </td>
             </tr>
         }
     </tbody>
