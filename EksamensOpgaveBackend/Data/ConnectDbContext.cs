@@ -14,6 +14,8 @@ namespace EksamensOpgaveBackend.Data
         public DbSet<ProductModel> productModels { get; set; }
 
 
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
